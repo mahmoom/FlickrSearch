@@ -42,12 +42,12 @@ class FlickrImageListViewModel: ObservableObject {
                 case .failure(let failure):
                     self?.state = .failed(failure)
                 }
-        }, receiveValue: {[weak self] data in
+        }, receiveValue: {[weak self] images in
             // ensure search results are for the most recently entered search string
-            guard data.searchString == self?.currentSearchStr else {
+            guard searchString == self?.currentSearchStr else {
                 return
             }
-            self?.state = .loaded(data.images)
+            self?.state = .loaded(images)
         }).store(in: &cancellables)
     }
 }

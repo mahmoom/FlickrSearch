@@ -26,7 +26,7 @@ final class FlickrClient {
         self.session = session
     }
     
-    func getImages(for searchString: String) -> AnyPublisher<FlickrImagesSearch, Error> {
+    func getImages(for searchString: String) -> AnyPublisher<[FlickrImage], Error> {
         guard let url = getURL(for: searchString) else {
             return Fail(error: FlickrClientError.invalidURL).eraseToAnyPublisher()
         }
@@ -41,7 +41,7 @@ final class FlickrClient {
                 return data
             }
             .decode(type: FlickrImageResponse.self, decoder: JSONDecoder())
-            .map { FlickrImagesSearch(searchString: searchString, images: $0.images) }
+            .map { $0.images }
             .eraseToAnyPublisher()
     }
     

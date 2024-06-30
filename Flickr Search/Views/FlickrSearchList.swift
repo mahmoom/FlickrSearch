@@ -37,9 +37,7 @@ struct FlickrSearchList: View {
         
         .searchable(text: $debouncingSearchTextManager.searchText)
         .onChange(of: debouncingSearchTextManager.debouncedSearchText) {
-            Task {
-                imageListViewModel.fetchImages(for: debouncingSearchTextManager.debouncedSearchText)
-            }
+            imageListViewModel.fetchImages(for: debouncingSearchTextManager.debouncedSearchText)
         }
     }
 }

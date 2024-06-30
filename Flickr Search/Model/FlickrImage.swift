@@ -34,8 +34,3 @@ struct FlickMediaObject: Codable {
         case urlString = "m"
     }
 }
-
-struct FlickrImagesSearch {
-    let searchString: String
-    let images: [FlickrImage]
-}

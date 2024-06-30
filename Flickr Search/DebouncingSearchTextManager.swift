@@ -16,8 +16,8 @@ class DebouncingSearchTextManager: ObservableObject {
         self.$searchText
             .debounce(for: .seconds(searchTextDelay), scheduler: DispatchQueue.main)
             .removeDuplicates()
-          .sink { searchText in
-            self.debouncedSearchText = searchText
+          .sink { [weak self] searchText in
+            self?.debouncedSearchText = searchText
         }.store(in: &cancellables)
     }
 }

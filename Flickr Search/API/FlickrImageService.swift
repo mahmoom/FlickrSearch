@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 protocol FlickrImageServiceProtocol {
-    func getImages(for searchString: String) -> AnyPublisher<FlickrImagesSearch, Error>
+    func getImages(for searchString: String) -> AnyPublisher<[FlickrImage], Error>
 }
 
 class FlickrImageService: FlickrImageServiceProtocol {
     let apiClient = FlickrClient()
     
-    func getImages(for searchString: String) -> AnyPublisher<FlickrImagesSearch, Error> {
+    func getImages(for searchString: String) -> AnyPublisher<[FlickrImage], Error> {
         return apiClient.getImages(for: searchString)
     }
 }
