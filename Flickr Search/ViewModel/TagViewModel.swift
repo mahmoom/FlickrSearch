@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class TagViewModel: ObservableObject {
+struct TagViewModel {
     var tags: [Tag] = []
     init(tagsString: String) {
         let tagsItems = tagsString.components(separatedBy: " ")
